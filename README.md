@@ -15,136 +15,71 @@ When you have set up your repo
 
 -->
 
-# Template repository for matlab analysis project
+# CPP source MRI
+
+This is a set of functions to prepare a source fMRI dataset for BIDSification and analyses
+
+This can perform:
+
+- 3D to 4D nii files conversion
+
+- anatomical defacing [ W I P ]
+
+- gzip the nii files in a BIDS raw folder
+
+The core functions are in the `src` folder. This set of functions is intended to be added manually
+as a submodule to the analysis repo forked from
+[template_fMRI_analysis](https://github.com/cpp-lln-lab/template_fMRI_analysis)
 
 ## How to install and use this template
 
-### Install with Git
+### Add as a submodule
 
-1. Click the green button `Use this template`.
+1. Open the terminal and navigate to your analysis folder forked from
+[template_fMRI_analysis](https://github.com/cpp-lln-lab/template_fMRI_analysis) and cloned locally
 
-1. Give a name to the repository you want to create. Something short that
-   contains the name of your experiment: `analysis_my_study`.
-
-1. Decide if you want this new repo to be public or private.
-
-1. Click on `Create repository from template`
-
-You now have a copy of the template on your Github account. You can then
-download the code and the pre-set dependencies like this.
-
-1. Click on green `Download` button and copy the `URL_to_your_repo` that is
-   shown there.
-
-1. Open a terminal and type this:
+2. Type
 
 ```bash
-git clone --recurse-submodules URL_to_your_repo
+# navigate to the `lib` folder
+cd lib
+
+# add the submodule
+git submodule add https://github.com/cpp-lln-lab/CPP_sourceMRI
+
+# initialize the nested submodule(s)
+git submodule update --init --recursive
 ```
 
-This will set up everything automatically in your current directory.
+3. commit the new changes (the new submodule(s))
 
-## Content
+### Dependencies
 
-```bash
-├── .git
-│   ├── COMMIT_EDITMSG
-│   ├── FETCH_HEAD
-│   ├── HEAD
-│   ├── ORIG_HEAD
-│   ├── branches
-│   ├── config
-│   ├── description
-│   ├── hooks
-│   │   ├── pre-commit.sample
-│   │   └── pre-push.sample
-│   ├── ...
-│   └── ...
-├── .github                # where you put anything github related
-│   └── workflows          # where you define your github actions
-│       └── moxunit.yml    # a yaml file that defines a github action
-├── lib                    # where you put the code from external libraries (mathworks website or other github repositories)
-│   └── README.md
-├── src                  # WHERE YOU PUT YOUR CODE
-│   ├── README.md
-│   └── miss_hit.cfg
-├── docs                 # where you write your documentation using sphinx
-│   ├── make.bat
-│   ├── Makefile
-│   ├── README.md
-│   ├── requirements.txt # to set up the python environment for the doc
-│   └── source           # the actual reStructured text file for your doc
-│       ├── conf.py
-│       ├── function_description.rst
-│       ├── index.rst
-│       ├── _static
-│       └── _templates
-├── tests               # where you put your unit tests
-|   ├── README.md
-|   └── miss_hit.cfg
-├── .travis.yml         # where you define the continuous integration done by Travis
-├── LICENSE
-├── README.md
-├── miss_hit.cfg        # configuration file for the matlab miss hit linter
-└── initEnv.m           # a .m file to set up your project (adds the right folder to the path)
-```
+Make sure that the following toolboxes are installed and added to the matlab
+path.
 
-## Keeping your code stylish: miss hit linter
+For instructions see the following links:
 
-### Matlab code style guide and quality
+<!-- lint disable -->
 
-We use the [MISS_HIT linter](https://github.com/florianschanda/miss_hit/) to
-automatically enforce / fix some code style issues and check for code quality.
+| Dependencies                                                                              | Used version |
+| ----------------------------------------------------------------------------------------- | ------------ |
+| [Matlab](https://www.mathworks.com/products/matlab.html)                                  | 20???        |
+| or [octave](https://www.gnu.org/software/octave/)                                         | 4.?          |
+| [SPM12](https://www.fil.ion.ucl.ac.uk/spm/software/spm12/)                                | v7487        |
+| [CPP_SPM](https://github.com/sergivalverde/nifti_tools)*                                  | > 0.1.0      |
 
-The linter is a python package that can be installed with:
+\*already "installed" in [template_fMRI_analysis](https://github.com/cpp-lln-lab/template_fMRI_analysis) and cloned locally
 
-```bash
-pip3 install --user miss_hit
-```
+<!-- lint enable -->
 
-The rules followed by MISS_HIT are in the
-[MISS_HIT configuration file](./miss_hit.cfg).
+## Contributing
 
-To check the code style of the whole repository, you can can simply type:
+Feel free to open issues to report a bug and ask for improvements.
 
-```bash
-mh_style .
-```
-
-Some styling issues can be automatically fixed by using the `--fix` flag. You
-might need to rerun this command several times if there are a lot of issues.
-
-```bash
-mh_style . --fix
-```
-
-Code quality can be checked with:
-
-```bash
-mh_metric .
-```
-
-To see only the issues that "break" the code quality rules set in the
-configuration file, type:
-
-```bash
-mh_metric . --ci
-```
-
-The code style and quality is also checked during the
-[continuous integration](.github/workflows/miss_hit.yml).
-
-For more information about MISS_HIT see its
-[documentation](https://florianschanda.github.io/miss_hit/).
-
-## Python environment
-
-More on this
-[here](https://the-turing-way.netlify.app/reproducible-research/renv/renv-package.html)
-
-## Testing your code
-
-The [MOxUnit testing framework](https://github.com/MOxUnit/MOxUnit) is set up to
-run tests automatically for any tests in the `tests` folder.
-
-## Continuous integration
+If you want to contribute, have a look at our
+[contributing guidelines](https://github.com/cpp-lln-lab/.github/blob/main/CONTRIBUTING.md)
+that are meant to guide you and help you get started. If something is not clear
+or you get stuck: it is more likely we did not do good enough a job at
+explaining things. So do not hesitate to open an issue, just to ask for
+clarification.
