@@ -95,7 +95,7 @@ function convert3Dto4D(optSource)
         if optSource.zip
 
           % Zip and delete the and the new 4D file
-          fprintf(1, 'ZIP AND DELETE THE NEW 4D BRAIN \n\n');
+          fprintf(1, 'ZIP THEN DELETES THE NEWLY CREATED 4D BRAIN \n\n');
 
           gzip([sequencePath filesep outputNameImage]);
 
