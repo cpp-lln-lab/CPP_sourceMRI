@@ -3,7 +3,7 @@
 function bidsGZipRawFolder(opt, keepUnzippedNii)
   %
   %
-  % GZip the nii files in a ``raw`` bids folders from the. It will do it independently of the task.
+  % GZip the nii files in a ``raw`` bids folders. It will do it independently of the task.
   %
   % USAGE::
   %
