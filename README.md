@@ -55,7 +55,7 @@ git submodule update --init --recursive
 
 ### Dependencies
 
-Make sure that the following toolboxes are installed and added to the matlab
+Make sure that the following toolboxes are installed
 path.
 
 For instructions see the following links:
@@ -67,7 +67,7 @@ For instructions see the following links:
 | [Matlab](https://www.mathworks.com/products/matlab.html)                                  | 20???        |
 | or [octave](https://www.gnu.org/software/octave/)                                         | 4.?          |
 | [SPM12](https://www.fil.ion.ucl.ac.uk/spm/software/spm12/)                                | v7487        |
-| [CPP_SPM](https://github.com/sergivalverde/nifti_tools)*                                  | > 0.1.0      |
+| [CPP_SPM](https://github.com/cpp-lln-lab/CPP_SPM)*                                        | > 0.1.0      |
 
 \*already "installed" in [template_fMRI_analysis](https://github.com/cpp-lln-lab/template_fMRI_analysis) and cloned locally
 
